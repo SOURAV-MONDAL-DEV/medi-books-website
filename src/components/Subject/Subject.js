@@ -1,9 +1,9 @@
 import React from 'react';
 
-const Subject = () => {
+const Subject = ({categories}) => {
     return (
         <div>
-            <p>subject</p>
+            <p>this is subject {categories.length} </p>
         </div>
     );
 };

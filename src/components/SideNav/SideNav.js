@@ -5,26 +5,17 @@ import React, { useEffect, useState } from 'react';
 
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import { Link, useNavigate } from 'react-router-dom';
 
 
 
 
 
-const SideNav = () => {
+const SideNav = ({showSubDetails}) => {
 
     const [checked, setChecked] = useState(false);
     const [radioValue, setRadioValue] = useState('1');
 
 
-
-    const navigate = useNavigate() ;
-    const handlesub = id =>{
-        return(
-            navigate(`/course/${id}`)
-        // console.log( id , "handke clicked")
-        )
-    };
 
 
     const [categories, setCategories] = useState([]);
@@ -53,7 +44,7 @@ const SideNav = () => {
                         onChange={(e) => setRadioValue(e.currentTarget.value)}
 
                         className="mb-3 rounded text-dark fw-semibold"
-                        onClick={()=>handlesub(radio.id)}
+                        onClick={()=>showSubDetails(radio.id)}
                     >
                         {radio.name}
                     </ToggleButton>

@@ -17,18 +17,13 @@ export const routes = createBrowserRouter([
             {
                 path: '/course',
                 element: <Course></Course>,
-                children:[
-                    {
-                        path:'/course/:id',
-                        element: <Subject></Subject>
+                // children:[
+                //     {
+                //         path:'/course/:id',
+                //         element: <Subject></Subject>
 
-                    },
-                    {
-                        path:'/course/topic/:id',
-                        element: <TopicDetails></TopicDetails>
-                    
-                    }
-                ]
+                //     }
+                // ]
             }
         ]
     }
