@@ -21,7 +21,7 @@ const SideNav = () => {
     const navigate = useNavigate() ;
     const handlesub = id =>{
         return(
-            navigate("/")
+            navigate(`/course/${id}`)
         // console.log( id , "handke clicked")
         )
     };
@@ -59,8 +59,6 @@ const SideNav = () => {
                     </ToggleButton>
                 ))}
             </ButtonGroup>
-
-            {/* {idx % 2 ? 'outline-success' : 'outline-danger'} */}
 
         </div>
     );

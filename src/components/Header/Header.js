@@ -7,6 +7,8 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 
+import Button from 'react-bootstrap/Button';
+
 
 
 
@@ -45,9 +47,9 @@ const Header = () => {
                         </NavDropdown> */}
                     </Nav>
                     <Nav>
-                        <Link className='m-2' to='/logIn'>Log in</Link>
-                        <Link className='m-2' to='/signUn'>Sign Up</Link>
-                        
+                        <Button className='m-1 ' variant="outline-info">LogIn</Button>
+                        <Button className='m-1 ' variant="outline-info">Sign Up</Button>
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
