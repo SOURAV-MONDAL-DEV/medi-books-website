@@ -12,7 +12,6 @@ import ToggleButton from 'react-bootstrap/ToggleButton';
 
 const SideNav = ({showSubDetails}) => {
 
-    const [checked, setChecked] = useState(false);
     const [radioValue, setRadioValue] = useState('1');
 
 

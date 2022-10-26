@@ -1,6 +1,5 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Outlet } from 'react-router-dom';
 import SideNav from '../SideNav/SideNav';
 import Subject from '../Subject/Subject';
 
@@ -17,9 +16,10 @@ const Course = () => {
             .then(data => setCategories(data));
     }, [])
 
-
+    const [categori, setCategori] = useState({})
     const showSubDetails = id => {
-        console.log(id);
+       const cat = categories.find(c => c.id === id);
+       setCategori(cat);
     }
 
 
@@ -31,7 +31,7 @@ const Course = () => {
                         <SideNav showSubDetails={showSubDetails}></SideNav>
                     </Col>
                     <Col lg="8">
-                        <Subject categories={categories}></Subject>
+                        <Subject categori={categori} ></Subject>
                     </Col>
                 </Row>
                
