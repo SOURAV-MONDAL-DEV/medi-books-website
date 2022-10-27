@@ -17,7 +17,13 @@ import { Image } from 'react-bootstrap';
 const Header = () => {
 
 
-    const { user, providerLogin } = useContext(AuthContext);
+    const { user, providerLogin, logOut } = useContext(AuthContext);
+
+    const handleLogOut = () => {
+        logOut()
+        .than(() => {})
+        .catch(error => console.error(error));
+    }
 
     const googleProvider = new GoogleAuthProvider()
 
@@ -50,7 +56,7 @@ const Header = () => {
                                                                     user?.uid ?
                                                                     <>
                                                                         <span className='mx-1'>{user?.displayName}</span>
-                                                                        <Button className='m-1  p-1 ' variant="outline-info"> Log out</Button>
+                                                                        <Button onClick={handleLogOut} className='m-1  p-1 ' variant="outline-info"> Log out</Button>
                                                                     </>
                                                                     :
                                                                     <>
