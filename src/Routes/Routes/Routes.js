@@ -4,6 +4,8 @@ import Course from "../../components/Course/Course";
 import Main from "../../layouts/Main";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
+import CheakOut from "../../Pages/CheakOut/CheakOut";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 export const routes = createBrowserRouter([
     {
@@ -25,6 +27,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
+            },
+            {
+                path: '/cheakout',
+                element: <PrivateRoute><CheakOut></CheakOut></PrivateRoute>
             }
         ]
     }

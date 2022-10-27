@@ -10,6 +10,8 @@ import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../contex/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Image } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 
 
 
@@ -18,6 +20,10 @@ const Header = () => {
 
 
     const { user, providerLogin, logOut } = useContext(AuthContext);
+    
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const handleLogOut = () => {
         logOut()
@@ -32,6 +38,7 @@ const Header = () => {
             .than(result => {
                 const user = result.user;
                 console.log(user);
+                navigate(from, {replace : true});
             })
             .catch(error => console.error(error));
     }
@@ -61,7 +68,7 @@ const Header = () => {
                                                                     :
                                                                     <>
                                                                         <Button className='m-1  p-1 ' variant="outline-info"><Link to='/login' className='text-decoration-none text-dark '>LogIn</Link></Button>
-                                                                        <Button className='m-1  p-1 ' variant="outline-info"><Link to='/register' className='text-decoration-none text-dark '>Sign Up</Link></Button>
+                                                                        <Button className='m-1  p-1 ' variant="outline-info"><Link to='/register' className='text-decoration-none text-dark '>Register</Link></Button>
                                                                         <Button onClick={handleGoogleSignIn} className='m-1  p-1 ' variant="outline-info"><Link className='text-decoration-none text-dark '>Sign In with Google</Link></Button>
 
                                                                     </>
