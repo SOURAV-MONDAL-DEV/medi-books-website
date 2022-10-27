@@ -1,13 +1,14 @@
 
-import React from 'react';
+import React, { useContext } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
-
 import Button from 'react-bootstrap/Button';
+import { FaUserCircle } from "react-icons/fa";
+import { AuthContext } from '../../contex/AuthProvider/AuthProvider';
 
 
 
@@ -20,6 +21,10 @@ import Button from 'react-bootstrap/Button';
 
 
 const Header = () => {
+
+
+    const {user} = useContext(AuthContext);
+
     return (
 
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -47,6 +52,8 @@ const Header = () => {
                         </NavDropdown> */}
                     </Nav>
                     <Nav>
+                        <div className='d-flex align-items-center'><FaUserCircle className='fs-3'></FaUserCircle></div>
+                        <Nav.Link href="">{user?.displayName}</Nav.Link>
                         <Button className='m-1 ' variant="outline-info">LogIn</Button>
                         <Button className='m-1 ' variant="outline-info">Sign Up</Button>
 
