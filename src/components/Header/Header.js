@@ -4,26 +4,31 @@ import React, { useContext } from 'react';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import { FaUserCircle } from "react-icons/fa";
 import { AuthContext } from '../../contex/AuthProvider/AuthProvider';
+import { GoogleAuthProvider } from 'firebase/auth';
+import { Image } from 'react-bootstrap';
 
-
-
-
-
-
-
-// import { Button } from 'bootstrap';
 
 
 
 const Header = () => {
 
 
-    const {user} = useContext(AuthContext);
+    const { user, providerLogin } = useContext(AuthContext);
+
+    const googleProvider = new GoogleAuthProvider()
+
+    const handleGoogleSignIn = () => {
+        providerLogin(googleProvider)
+            .than(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.error(error));
+    }
 
     return (
 
@@ -37,25 +42,25 @@ const Header = () => {
                         <Link className='m-2 text-decoration-none fw-semibold' to='/course'>Course</Link>
                         <Link className='m-2 text-decoration-none fw-semibold' to='/blog'>Blog</Link>
                         <Link className='m-2 text-decoration-none fw-semibold' to='/faq'>FAQ</Link>
-                        {/* <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="course">Course</Nav.Link> */}
-                        {/* <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">
-                                Another action
-                            </NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                            <NavDropdown.Divider />
-                            <NavDropdown.Item href="#action/3.4">
-                                Separated link
-                            </NavDropdown.Item>
-                        </NavDropdown> */}
+                        
                     </Nav>
                     <Nav>
-                        <div className='d-flex align-items-center'><FaUserCircle className='fs-3'></FaUserCircle></div>
-                        <Nav.Link href="">{user?.displayName}</Nav.Link>
-                        <Button className='m-1 ' variant="outline-info">LogIn</Button>
-                        <Button className='m-1 ' variant="outline-info">Sign Up</Button>
+                        <div className='d-flex align-items-center'>{user?.photoURL ? <Image src={user?.photoURL} className='' roundedCircle style={{ height: '30px' }}></Image> : <FaUserCircle className='fs-3'></FaUserCircle>}</div>
+                        <Nav.Link className='fw-bold' href="">{
+                                                                    user?.uid ?
+                                                                    <>
+                                                                        <span className='mx-1'>{user?.displayName}</span>
+                                                                        <Button className='m-1  p-1 ' variant="outline-info"> Log out</Button>
+                                                                    </>
+                                                                    :
+                                                                    <>
+                                                                        <Button className='m-1  p-1 ' variant="outline-info"><Link to='/login' className='text-decoration-none text-dark '>LogIn</Link></Button>
+                                                                        <Button className='m-1  p-1 ' variant="outline-info"><Link to='/register' className='text-decoration-none text-dark '>Sign Up</Link></Button>
+                                                                        <Button onClick={handleGoogleSignIn} className='m-1  p-1 ' variant="outline-info"><Link className='text-decoration-none text-dark '>Sign In with Google</Link></Button>
+
+                                                                    </>
+                                                                }</Nav.Link>
+                                                                
 
                     </Nav>
                 </Navbar.Collapse>
@@ -63,28 +68,6 @@ const Header = () => {
         </Navbar>
 
 
-
-
-
-
-        // <div className='bg-info ' >
-        //     <Container className='d-flex justify-content-between px-4 '>
-
-        //         <div>
-        //             <h1 className='text-warning' >MEDI-<span>BOOKS</span></h1>
-        //         </div>
-        //         <div>
-        //             <Link className='m-2' to='/'>Home</Link>
-        //             <Link className='m-2' to='/course'>Course</Link>
-        //             <Link className='m-2' to='/blog'>Blog</Link>
-        //             <Link className='m-2' to='/faq'>FAQ</Link>
-        //             <button className=''>Dark</button>
-        //             <Link className='m-2' to='/faq'>Log in</Link>
-        //             <Link className='m-2' to='/faq'>FAQ</Link>
-        //         </div>
-
-        //     </Container>
-        // </div>
     );
 };
 
