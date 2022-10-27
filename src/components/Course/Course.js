@@ -14,17 +14,22 @@ const Course = () => {
         fetch('http://localhost:5000/course-categories')
             .then(res => res.json())
             .then(data => setCategories(data));
+
     }, [])
 
-    const [categori, setCategori] = useState({})
-    const showSubDetails = id => {
-       const cat = categories.find(c => c.id === id);
-       setCategori(cat);
-    }
 
+    const [categori, setCategori] = useState([]);
+
+    const showSubDetails = (id) => {
+        const cat = categories.find(c => c.id === id);
+        setCategori(cat);
+    }
+    
+   
+    
 
     return (
-        <div>
+        <div >
             <Container>
                 <Row>
                     <Col lg="4">
@@ -34,7 +39,7 @@ const Course = () => {
                         <Subject categori={categori} ></Subject>
                     </Col>
                 </Row>
-               
+
             </Container>
         </div>
     );
