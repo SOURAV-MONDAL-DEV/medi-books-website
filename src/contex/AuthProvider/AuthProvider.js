@@ -10,6 +10,7 @@ const AuthProvider = ({children}) => {
 
    const [user, setUser] = useState(null);
    const [loading, setLoading] = useState(true);
+   const [topic, setTopic] = useState(0)
 
     const providerLogin = (Provider) =>{
         setLoading(true);
@@ -30,7 +31,7 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signOut(auth);
     };
-
+     
     useEffect(()=>{
     //    const unsubscribe = 
        onAuthStateChanged(auth, (currentUser)=>{
@@ -41,7 +42,7 @@ const AuthProvider = ({children}) => {
         // return unsubscribe();
     },[]);
 
-    const AuthInfo = {user, loading, providerLogin, createUser, logOut, signIn}
+    const AuthInfo = {user, loading, topic, setTopic, providerLogin, createUser, logOut, signIn}
     return (
         <AuthContext.Provider value = {AuthInfo}>
             {children}

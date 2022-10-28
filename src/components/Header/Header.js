@@ -64,9 +64,8 @@ const Header = () => {
                         
                     </Nav>
                     <Nav>
-                        {
-                            <button className='border border-0 rounded-circle '><FaMoon></FaMoon></button>
-                        }
+                        
+                        <div className='d-flex align-items-center mx-3'><FaMoon></FaMoon></div>
                         <div className='d-flex align-items-center'>{user?.photoURL ? <Image src={user?.photoURL} className='' roundedCircle style={{ height: '30px' }}></Image> : <FaUserCircle className='fs-3'></FaUserCircle>}</div>
                         <Nav.Link className='fw-bold' href="">{
                                                                     user?.uid ?
