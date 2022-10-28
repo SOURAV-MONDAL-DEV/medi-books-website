@@ -6,7 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { FaUserCircle } from "react-icons/fa";
+import { FaUserCircle, FaGoogle } from "react-icons/fa";
 import { AuthContext } from '../../contex/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Image } from 'react-bootstrap';
@@ -47,7 +47,10 @@ const Header = () => {
 
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand href="#home">MEDI-BOOKS</Navbar.Brand>
+                    <Navbar.Brand className='d-flex align-items-center' href="#home">
+                    <Image src='../../medicine-book.png' className='' style={{ height: '40px' }}></Image>
+                    <div className='fw-bold ' style={{ color:'red'}}>Medi Books</div>
+                </Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
@@ -69,7 +72,7 @@ const Header = () => {
                                                                     <>
                                                                         <Button className='m-1  p-1 ' variant="outline-info"><Link to='/login' className='text-decoration-none text-dark '>LogIn</Link></Button>
                                                                         <Button className='m-1  p-1 ' variant="outline-info"><Link to='/register' className='text-decoration-none text-dark '>Register</Link></Button>
-                                                                        <Button onClick={handleGoogleSignIn} className='m-1  p-1 ' variant="outline-info"><Link className='text-decoration-none text-dark '>Sign In with Google</Link></Button>
+                                                                        <Button onClick={handleGoogleSignIn} className='m-1  p-1 ' variant="outline-info"><Link className='text-decoration-none text-dark '><FaGoogle></FaGoogle> Sign In</Link></Button>
 
                                                                     </>
                                                                 }</Nav.Link>

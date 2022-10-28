@@ -6,6 +6,7 @@ import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Login/Register";
 import CheakOut from "../../Pages/CheakOut/CheakOut";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Blog from "../../Pages/Blog/Blog";
 
 export const routes = createBrowserRouter([
     {
@@ -31,6 +32,10 @@ export const routes = createBrowserRouter([
             {
                 path: '/cheakout',
                 element: <PrivateRoute><CheakOut></CheakOut></PrivateRoute>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             }
         ]
     }

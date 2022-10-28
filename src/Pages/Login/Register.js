@@ -34,8 +34,8 @@ const Register = () => {
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicName">
-                <Form.Label>Your Name</Form.Label>
-                <Form.Control name="name" type="text" placeholder="Enter Name" />
+                <Form.Label>Your Full Name</Form.Label>
+                <Form.Control name="name" type="text" placeholder="Enter Full Name" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicEmail">
