@@ -18,14 +18,10 @@ const Subject = ({ categori }) => {
 
 
 
-                {/* <Button className='btn-danger m-1'><FaDownload></FaDownload> Download PDF</Button> */}
-                <Button className='m-1'><Link to='/cheakout' className='text-white text-decoration-none'><FaCrown></FaCrown> Buy Premium</Link></Button>
                 <Pdf targetRef={ref} filename="code-example.pdf">
                     {({ toPdf }) => <Button  onClick={toPdf} className='btn-danger m-1'><FaDownload></FaDownload> Download PDF</Button> }
                 </Pdf>
-                {/* <div  ref={ref} >
-                    <p>test pdf doen</p>
-                </div> */}
+                <Button className='m-1'><Link to='/cheakout' className='text-white text-decoration-none'><FaCrown></FaCrown> Buy Premium</Link></Button>
             </div >
             <div ref={ref} className='bg-info '>
                 <div className='bg-info p-4'><h3 className='my-3'>{categori?.title || "On this course you will learn The basic Fundamental of Human Anatomy"}</h3></div>
