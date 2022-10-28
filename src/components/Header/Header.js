@@ -6,11 +6,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
-import { FaUserCircle, FaGoogle } from "react-icons/fa";
+import { FaUserCircle, FaGoogle, FaMoon } from "react-icons/fa";
 import { AuthContext } from '../../contex/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { Image } from 'react-bootstrap';
 import { useLocation, useNavigate } from 'react-router-dom';
+import Tooltip from '../ToolTip/Tootip';
 
 
 
@@ -43,6 +44,8 @@ const Header = () => {
             .catch(error => console.error(error));
     }
 
+
+    
     return (
 
         <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
@@ -61,6 +64,9 @@ const Header = () => {
                         
                     </Nav>
                     <Nav>
+                        {
+                            <button className='border border-0 rounded-circle '><FaMoon></FaMoon></button>
+                        }
                         <div className='d-flex align-items-center'>{user?.photoURL ? <Image src={user?.photoURL} className='' roundedCircle style={{ height: '30px' }}></Image> : <FaUserCircle className='fs-3'></FaUserCircle>}</div>
                         <Nav.Link className='fw-bold' href="">{
                                                                     user?.uid ?
@@ -75,7 +81,8 @@ const Header = () => {
                                                                         <Button onClick={handleGoogleSignIn} className='m-1  p-1 ' variant="outline-info"><Link className='text-decoration-none text-dark '><FaGoogle></FaGoogle> Sign In</Link></Button>
 
                                                                     </>
-                                                                }</Nav.Link>
+                                                                }
+                        </Nav.Link>
                                                                 
 
                     </Nav>
