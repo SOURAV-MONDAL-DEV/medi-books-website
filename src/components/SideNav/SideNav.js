@@ -26,11 +26,11 @@ const SideNav = ({showSubDetails}) => {
     }, [])
 
     return (
-        <div>
-            <h2>all catagori{categories.length}</h2>
+        <div className='mt-3 text-success'>
+            <h2 className='border-bottom  border-primary pb-2'>Your favourite course is here.  Cheak them Out from below: </h2>
 
 
-            <ButtonGroup className='d-flex flex-column '>
+            <ButtonGroup className='d-flex flex-column pt-4'>
                 {categories.map((radio, idx) => (
                     <ToggleButton
                         key={idx}

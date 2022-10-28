@@ -23,7 +23,7 @@ const CheakOut = () => {
                 <img  className='mx-auto' src={user?.photoURL} ></img>
             </div>
             <div className='text-center'>
-                <h1>HELLOW, {user?.displayName}</h1>
+                <h1>HELLO, {user?.displayName}</h1>
                 <h3>Wellcome to your {categori?.name} course.</h3>
             </div>
             <div className='d-flex mx-auto'>
